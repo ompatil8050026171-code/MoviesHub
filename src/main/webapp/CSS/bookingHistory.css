@@ -1,0 +1,528 @@
+@charset "UTF-8";
+/* ==========================================================================
+   MOVIESHUB - PREMIUM BOOKING HISTORY STYLES
+   Inspired by BookMyShow Dark Cinema Theme & Modern Glassmorphism
+   ========================================================================== */
+
+/* Import Luxury Cinema Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* Dynamic Color Variables */
+:root {
+    --primary-red: #f84464;
+    --primary-red-glow: rgba(248, 68, 100, 0.35);
+    --accent-emerald: #00ff88;
+    --accent-emerald-glow: rgba(0, 255, 136, 0.3);
+    --accent-gold: #ffb400;
+    --bg-dark: #08080c;
+    --card-bg: rgba(18, 18, 28, 0.75);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0bc;
+    --text-muted: #71718a;
+    --navbar-bg: rgba(20, 20, 32, 0.85);
+    --font-main: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition-smooth: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================
+   RESET & BASE STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ambient Backdrop Glow Orbs */
+body::before {
+    content: '';
+    position: fixed;
+    top: -15%;
+    right: 10%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(248, 68, 100, 0.1) 0%, rgba(0, 255, 136, 0.05) 50%, transparent 70%);
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: 5%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(248, 68, 100, 0.05) 50%, transparent 70%);
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 70px;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 6%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--primary-red);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    text-shadow: 0 0 20px var(--primary-red-glow);
+    transition: var(--transition-smooth);
+}
+
+.logo:hover {
+    transform: scale(1.03);
+    text-shadow: 0 0 28px rgba(248, 68, 100, 0.7);
+}
+
+.nav-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    padding: 6px 0;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-red), var(--accent-emerald));
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   PAGE CONTAINER
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #b8b8db 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.title::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 28px;
+    background: linear-gradient(180deg, var(--primary-red), var(--accent-emerald));
+    border-radius: 4px;
+    box-shadow: 0 0 12px var(--primary-red-glow);
+}
+
+
+/* =========================
+   BOOKING CARD
+========================= */
+
+.booking-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    margin-bottom: 22px;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.booking-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 
+        0 28px 65px rgba(0, 0, 0, 0.55),
+        0 0 25px rgba(248, 68, 100, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================
+   BOOKING HEADER
+========================= */
+
+.booking-header {
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.movie-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+}
+
+.theatre-name {
+    margin-top: 6px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.booking-id {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-family: monospace, var(--font-main);
+    letter-spacing: 0.5px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================
+   STATUS BADGE
+========================= */
+
+.status {
+    color: var(--accent-emerald);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: rgba(0, 255, 136, 0.12);
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    padding: 6px 14px;
+    border-radius: 999px;
+    box-shadow: 0 0 15px var(--accent-emerald-glow);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    box-shadow: 0 0 8px var(--accent-emerald);
+}
+
+
+/* =========================
+   DROPDOWN BUTTON
+========================= */
+
+.dropdown-btn {
+    width: 100%;
+    padding: 16px 28px;
+    border: none;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: var(--font-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition-smooth);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dropdown-btn::after {
+    content: '▼';
+    font-size: 11px;
+    color: var(--primary-red);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+
+.dropdown-btn.active::after,
+.booking-details.show ~ .dropdown-btn::after {
+    transform: rotate(180deg);
+}
+
+
+/* =========================
+   DROPDOWN CONTENT
+========================= */
+
+.booking-details {
+    display: none;
+    padding: 24px 28px;
+    background: rgba(12, 12, 20, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.booking-details.show {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   INFORMATION GRID
+========================= */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.info-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 16px 18px;
+    border-radius: 12px;
+    transition: var(--transition-smooth);
+}
+
+.info-box:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.info-label {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    margin-top: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+
+/* =========================
+   ITEMS & PRICING BREAKDOWN
+========================= */
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-top: 24px;
+    margin-bottom: 12px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================
+   TOTAL AMOUNT
+========================= */
+
+.total {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 2px solid rgba(248, 68, 100, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.total span:last-child {
+    color: var(--accent-gold);
+    font-size: 22px;
+    text-shadow: 0 0 15px rgba(255, 180, 0, 0.3);
+}
+
+
+/* =========================
+   LOADING & ERROR STATES
+========================= */
+
+.loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+    font-size: 17px;
+    font-weight: 600;
+    background: var(--card-bg);
+    border-radius: 18px;
+    border: 1px solid var(--card-border);
+}
+
+.error,
+#error {
+    display: none;
+    text-align: center;
+    color: var(--primary-red);
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    background: rgba(248, 68, 100, 0.1);
+    border: 1px solid rgba(248, 68, 100, 0.3);
+    border-radius: 18px;
+    box-shadow: 0 0 25px var(--primary-red-glow);
+    margin-bottom: 20px;
+}
+
+.error:empty,
+#error:empty {
+    display: none !important;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 20px;
+    }
+
+    .booking-details {
+        padding: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .total {
+        font-size: 17px;
+    }
+    
+    .total span:last-child {
+        font-size: 20px;
+    }
+}

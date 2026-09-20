@@ -1,0 +1,363 @@
+@charset "UTF-8";
+/* ==========================================================================
+   MOVIESHUB - PREMIUM USER PROFILE STYLES (profile.css)
+   Inspired by BookMyShow Dark Cinema Theme & Modern Glassmorphism
+   ========================================================================== */
+
+/* Import Luxury Cinema Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* Dynamic Color Palette & Variables */
+:root {
+    --primary-red: #f84464;
+    --primary-red-dark: #d3163b;
+    --primary-red-glow: rgba(248, 68, 100, 0.4);
+    --accent-emerald: #00ff88;
+    --accent-emerald-glow: rgba(0, 255, 136, 0.35);
+    --cyan-accent: #00f2fe;
+    --bg-dark: #08080c;
+    --card-bg: rgba(18, 18, 28, 0.75);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --navbar-bg: rgba(20, 20, 32, 0.85);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0bc;
+    --text-muted: #71718a;
+    --font-main: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition-smooth: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================
+   RESET & BASE STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ambient Background Light Orbs */
+body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: 20%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, rgba(248, 68, 100, 0.12) 0%, rgba(0, 242, 254, 0.05) 50%, transparent 70%);
+    filter: blur(130px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -15%;
+    right: 20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, rgba(248, 68, 100, 0.05) 50%, transparent 70%);
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    height: 75px;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--primary-red);
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 20px var(--primary-red-glow);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.logo:hover {
+    transform: scale(1.03);
+    text-shadow: 0 0 28px rgba(248, 68, 100, 0.7);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    padding: 6px 0;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-red), var(--cyan-accent));
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+
+/* ================= PROFILE CONTAINER ================= */
+
+.profile-container {
+    width: 620px;
+    max-width: 90%;
+    margin: 60px auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 42px 40px;
+    border-radius: 24px;
+    border: 1px solid var(--card-border);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 1;
+    transition: var(--transition-smooth);
+}
+
+.profile-container:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 
+        0 35px 90px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.profile-title {
+    text-align: center;
+    margin-bottom: 34px;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #f84464 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ================= PROFILE ROW ================= */
+
+.profile-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 22px 0;
+}
+
+.profile-row:last-child {
+    border-bottom: none;
+}
+
+.profile-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.profile-value {
+    font-size: 17px;
+    color: var(--text-primary);
+    font-weight: 600;
+    flex: 1;
+}
+
+
+/* ================= EDIT INPUT ================= */
+
+.edit-input {
+    flex: 1;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+}
+
+.edit-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-red);
+    box-shadow: 0 0 15px var(--primary-red-glow);
+}
+
+
+/* ================= BUTTONS ================= */
+
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-main);
+    letter-spacing: 0.2px;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #f84464 0%, #d3163b 100%);
+    color: var(--text-primary);
+    box-shadow: 0 4px 16px var(--primary-red-glow);
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #00ff88 0%, #00b359 100%);
+    color: #051a0e;
+    box-shadow: 0 4px 16px var(--accent-emerald-glow);
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(248, 68, 100, 0.6);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 255, 136, 0.5);
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+
+/* ================= ROLE & NOT EDITABLE ================= */
+
+.role-text {
+    color: var(--cyan-accent);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.not-editable {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-style: italic;
+}
+
+#error,
+.error {
+    display: none;
+}
+
+#error:empty,
+.error:empty {
+    display: none !important;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 700px) {
+    .profile-container {
+        width: 92%;
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+
+    .navbar {
+        height: auto;
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .profile-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .button-container {
+        justify-content: flex-end;
+        margin-top: 8px;
+    }
+}
